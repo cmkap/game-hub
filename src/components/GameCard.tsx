@@ -3,7 +3,8 @@ import { Card, CardBody } from "@chakra-ui/card";
 import { Image } from "@chakra-ui/image";
 import { Heading } from "@chakra-ui/layout";
 import PlatformIconList from "./PlatformIconList";
-
+import CriticScore from "./CriticScore";
+import { HStack } from "@chakra-ui/react";
 interface Props {
   game: Game;
 }
@@ -15,8 +16,13 @@ const GameCard = ({ game }: Props) => {
 
       <CardBody>
         <Heading fontSize="2xl">{game.name}</Heading>
-        {/* constructing an arrray of plaform objects because of api structure */}
-        <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)}/>
+        <HStack justifyContent="space-between">
+          {/* constructing an arrray of plaform objects because of api structure */}
+          <PlatformIconList
+            platforms={game.parent_platforms.map((p) => p.platform)}
+          />
+          <CriticScore score={game.metacritic} />
+        </HStack>
       </CardBody>
     </Card>
   );
