@@ -17,6 +17,7 @@ export interface GameQuery {
 }
 
 function App() {
+  console.log(import.meta.env)
   const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery)
 
 
